@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import RowCliente from './RowCliente';
 
 const TableCliente = () => {
+
+    const [clienteList, setClienteList] = useState([
+        {
+            "idCliente": 1,
+            "nombres": "Yohan",
+            "apellidos": "Yohan",
+            "dirección": "Yohan",
+            "dirección": "Yohan",
+            "telefono": "Yohan",
+            "email": "Yohan"
+        }, 
+        {
+            "idCliente": 2,
+            "nombres": "Molina",
+            "apellidos": "Molina",
+            "dirección": "Molina",
+            "dirección": "Molina",
+            "telefono": "Molina",
+            "email": "Molina"
+        }
+    ]);
+
     return (
         <div className="table-container">
             <table className="table is-hoverable is-fullwidth">
@@ -15,25 +38,11 @@ const TableCliente = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Yohan</td>
-                        <td>Yohan</td>
-                        <td>Yohan</td>
-                        <td>Yohan</td>
-                        <td>Yohan</td>
-                        <td>
-                            <button className='button is-small is-info mr-1' title='Modificar'>
-                                <span className="icon is-small">
-                                    <i className="fas fa-edit"></i>
-                                </span>
-                            </button>
-                            <button className='button is-small is-danger' title='Eliminar'>
-                                <span className="icon is-small">
-                                    <i className="fas fa-trash-alt"></i>
-                                </span>
-                            </button>
-                        </td>
-                    </tr>
+                    {
+                        clienteList.map(cliente => (
+                            <RowCliente cliente={cliente} key={cliente.idCliente}/>
+                        ))
+                    }
                 </tbody>
             </table>
         </div>
